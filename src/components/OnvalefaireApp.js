@@ -1,21 +1,31 @@
 'use strict';
 
 var React = require('react/addons');
-var ReactTransitionGroup = React.addons.TransitionGroup;
+var Chart = require('./Chart')
 
 // CSS
 require('normalize.css');
-require('../styles/main.css');
+require('../styles/main.sass');
 
-var imageURL = require('../images/yeoman.png');
+var req = require.context('json!yaml!../../db', true, /.yaml$/);
+//each document contains a quote and data
+var documents = req.keys().map(key => req(key))
 
 var OnvalefaireApp = React.createClass({
   render: function() {
     return (
       <div className='main'>
-        <ReactTransitionGroup transitionName="fade">
-          <img src={imageURL} />
-        </ReactTransitionGroup>
+    	 <article>
+        <h2>Loi sur la transition énergétique</h2>
+        <ul>
+          {documents.map(document =>
+            <li>
+              <q cite="masource.com">{document.quote.text}</q>
+              <Chart data={document.data} />
+            </li>
+          )}
+        </ul>
+  	   </article>
       </div>
     );
   }

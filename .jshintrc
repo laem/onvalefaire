@@ -22,6 +22,7 @@
   "newcap": false,
   "globals": {
     "React": true
-  }
+  },
+  "asi": true
 }
 

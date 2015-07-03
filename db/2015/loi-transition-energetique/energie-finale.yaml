@@ -1,0 +1,9 @@
+quote:
+  text: Réduire la consommation énergétique finale de 50 % en 2050 par rapport à la référence 2012, en visant un objectif intermédiaire de 20 % en 2030.
+data:
+  source: INSEE
+  set:
+    2015 : 12
+    2014 : 13
+  objective:
+    2016: 10

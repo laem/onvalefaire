@@ -1,0 +1,9 @@
+quote:
+  text: Réduire les émissions de gaz à effet de serre de 40 % entre 1990 et 2030 et de diviser par quatre les émissions de gaz à effet de serre entre 1990 et 2050.
+data:
+  source: INSEE
+  set:
+    2015 : 12
+    2014 : 13
+  objective:
+    2016: 10
