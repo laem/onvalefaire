@@ -1,3 +1,28 @@
-.Chart
-  border: 1px dashed #eee
-  color: #eee
+@import "_variables"
+
+.chart svg
+  fill: $theme
+  stroke: $theme
+
+.chart text
+  stroke-width: 0
+
+.chart path.line
+  fill: none
+  stroke-width: 1.5px
+
+.chart .axis
+  font-size: 16px
+
+.chart .axis path
+  stroke-width: 0.5px
+  fill: none
+.chart .axis.y path
+  stroke-width: 0
+.chart .axis.y .tick line
+  opacity: 0.1
+
+.chart .axis.x .tick line
+  opacity: 0.35
+.chart .axis.x g:last-of-type line
+  opacity: 0

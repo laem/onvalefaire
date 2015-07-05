@@ -20,7 +20,8 @@ var OnvalefaireApp = React.createClass({
         <ul>
           {documents.map(document =>
             <li>
-              <q cite="masource.com">{document.quote.text}</q>
+              <q cite="masource.com" dangerouslySetInnerHTML={{__html: document.quote.text}}>
+              </q>
               <Chart data={document.data} />
             </li>
           )}
