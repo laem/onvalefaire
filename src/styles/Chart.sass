@@ -1,28 +1,48 @@
 @import "_variables"
 
-.chart svg
-  fill: $theme
-  stroke: $theme
+.chart
+  svg
+    fill: $theme
+    stroke: $theme
 
-.chart text
-  stroke-width: 0
+  text
+    stroke-width: 0
 
-.chart path.line
-  fill: none
-  stroke-width: 1.5px
+  path.line
+    fill: none
+    stroke-width: 1.5px
 
-.chart .axis
-  font-size: 16px
+  path.line.objective
+    stroke-dasharray: 2, 3
+    stroke-width: 1px
+    opacity: 0.65
 
-.chart .axis path
-  stroke-width: 0.5px
-  fill: none
-.chart .axis.y path
-  stroke-width: 0
-.chart .axis.y .tick line
-  opacity: 0.1
+  .axis
+    font-size: 16px
 
-.chart .axis.x .tick line
-  opacity: 0.35
-.chart .axis.x g:last-of-type line
-  opacity: 0
+  .axis path
+    stroke-width: 0.5px
+    fill: none
+  .axis.y path
+    stroke-width: 0
+  .axis.y .tick line
+    opacity: 0.1
+  .axis.y g:first-of-type text
+    opacity: 0
+
+
+  .axis.x .tick line
+    opacity: 0.35
+
+  .axis.x
+    g:first-of-type line
+      opacity: 0
+    g:last-of-type line
+      opacity: 0
+  .axis.x text.objective
+    font-weight: 400
+
+  circle
+    fill: lighten($theme, 8%)
+  circle:first-of-type
+    fill: $theme

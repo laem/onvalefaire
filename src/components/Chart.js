@@ -2,6 +2,7 @@
 
 var React = require('react/addons');
 var d3 = require('d3')
+var Utils = require('./utils.js')
 
 require('styles/Chart.sass');
 
@@ -19,35 +20,18 @@ var Chart = React.createClass({
 
   componentDidMount: function(){
     //DATA
-    var ds = this.props.data.set
-    //object to list of points
-    var points = Object.keys(ds).map(k => new Object({year: d3.time.format("%Y").parse(k), val: +ds[k]}))
+    var {history, objectives} = this.props.data
+    //get a list of points from these objects
+    var historyPoints = Utils.yearSeriesArray(history),
+    lastHistoryPoint = historyPoints.reduce((mem, next) => next.year > mem.year ? next : mem),
+    objectivePoints = [lastHistoryPoint].concat(Utils.yearSeriesArray(objectives, "objective")),
+    points = historyPoints.concat(objectivePoints);
 
     //SIZES
     var [width, height] = [800, 300]
     var margin = {top: 20, right: 20, bottom: 30, left: 50},
     drawingWidth = width - margin.left - margin.right,
     drawingHeight = height - margin.top - margin.bottom;
-
-    //SCALES & AXES
-    var x = d3.time.scale()
-    .domain(d3.extent(points, p => p.year))
-    .range([0, drawingWidth])
-    var y = d3.scale.linear()
-    .domain([0, d3.max(points, p => p.val)])
-    .range([drawingHeight, 0])
-
-    var xAxis = d3.svg.axis().scale(x)
-    .orient("bottom").outerTickSize(0).ticks(d3.time.years, 4)
-
-    var yAxis = d3.svg.axis().scale(y)
-    .orient("left").outerTickSize(0).ticks(6)
-
-    // SVG
-    var line = d3.svg.line()
-    .x(d => x(d.year))
-    .y(d => y(d.val))
-    .interpolate("basis")
 
     var svg = d3.select(this.refs["le-svg"].getDOMNode())
     var playground = svg
@@ -56,10 +40,20 @@ var Chart = React.createClass({
     .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-    playground.append("path")
-    .datum(points)
-    .attr("class", "line")
-    .attr("d", line)
+    //SCALES & AXES
+    var x = d3.time.scale()
+    .range([0, drawingWidth])
+    .domain(d3.extent(points, p => p.year))
+
+    var y = d3.scale.linear()
+    .range([drawingHeight, 0])
+    .domain([0, d3.max(points, p => p.val)])
+
+    var xAxis = d3.svg.axis().scale(x)
+    .orient("bottom").outerTickSize(0).ticks(d3.time.years, 10)
+
+    var yAxis = d3.svg.axis().scale(y)
+    .orient("left").outerTickSize(0).ticks(6)
 
     playground.append("g")
     .attr("class", "y axis")
@@ -76,6 +70,36 @@ var Chart = React.createClass({
     .selectAll(".tick line")
     .attr("y1", 1)
     .attr("y2", 6)
+
+    d3.selectAll(".x.axis .tick text")
+    .attr("class", p => objectivePoints.find(o => o.year.getTime() === p.getTime()) ? "objective" : "")
+
+    // Draw the LINE(s)
+    var line = d3.svg.line()
+    .x(p => x(p.year))
+    .y(p => y(p.val))
+    .interpolate("basis")
+
+    function drawPartialLine(points){
+      playground.append("path")
+      .datum(points)
+      .attr("class", `line ${points.slice(-1)[0].marker || ""}`)
+      .attr("d", line)
+    }
+
+    drawPartialLine(historyPoints)
+    drawPartialLine(objectivePoints)
+
+    // POINT CIRCLES
+    playground.append("g").attr("class", "circles")
+    .selectAll("circle")
+    .data(objectivePoints)
+    .enter()
+    .append("circle")
+    .attr("r", 3.5)
+    .attr("cx", p => x(p.year))
+    .attr("cy", p => y(p.val))
+
   }
 
 
