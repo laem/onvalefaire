@@ -23,11 +23,36 @@ article
   font-weight: 300
 
 
-article h2
-  color: #16a085
-  font-weight: 300
-  font-size: 38px
-  letter-spacing: -0.02em
+article
+  .title
+    display:-moz-box
+    display:-webkit-box
+    display:box
+    margin-top: 30px
+  .title h2
+    color: $theme
+    font-weight: 300
+    font-size: 38px
+    letter-spacing: -0.02em
+    margin-top: 0
+  .title .decoration
+    text-align: center
+    width: 60px
+    margin-top: 8px
+    margin-right: 10px
+  .title .decoration img
+    margin-left: 15px
+    margin-right: 15px
+    width: 40px
+    margin-bottom: -2px
+  .title .decoration .date
+    color: $theme
+    font-size: 10px
+    line-height: 9px
+    position: relative
+    bottom: 10px
+    font-weight: 400
+    letter-spacing: 0
 
 article ul
   list-style: none
@@ -36,10 +61,11 @@ article ul
 article li
   font-size: 23px
   color: #222
-  margin-top: 6%
+  margin-top: 8%
+  margin-bottom: 10%
 
 article .chart
-  margin-top: 3%
+  margin-top: 4%
 
 article q::before
   font-size: 35px
