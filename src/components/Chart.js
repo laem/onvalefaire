@@ -1,12 +1,12 @@
 'use strict';
 
-var React = require('react/addons');
-var d3 = require('d3')
-var Utils = require('./utils.js')
+let React = require('react/addons');
+let d3 = require('d3')
+let Utils = require('./utils.js')
 
 require('styles/Chart.sass');
 
-var Chart = React.createClass({
+let Chart = React.createClass({
 
   render: function () {
     return (
@@ -20,39 +20,47 @@ var Chart = React.createClass({
 
   componentDidMount: function(){
     //DATA
-    var {history, objectives} = this.props.data
+    let {history, objectives} = this.props.data
+    //compute objective if they are operations
+    Object.keys(objectives).forEach(k => {
+      let matches = objectives[k].match(/(\d+)\s?%\s?\[(\d{4})\]/) // e.g 20 % [1990] for 20 percent of the value in 1990
+      if (matches.length > 0 ){
+        let [, percent, year] = matches
+        objectives[k] = history[year] * (+percent) / 100
+      }
+    })
     //get a list of points from these objects
-    var historyPoints = Utils.yearSeriesArray(history),
+    let historyPoints = Utils.yearSeriesArray(history),
     lastHistoryPoint = historyPoints.reduce((mem, next) => next.year > mem.year ? next : mem),
-    objectivePoints = [lastHistoryPoint].concat(Utils.yearSeriesArray(objectives, "objective")),
+    objectivePoints = [lastHistoryPoint, ...Utils.yearSeriesArray(objectives, "objective")],
     points = historyPoints.concat(objectivePoints);
 
     //SIZES
-    var [width, height] = [800, 300]
-    var margin = {top: 20, right: 20, bottom: 30, left: 50},
+    let [width, height] = [800, 300]
+    let margin = {top: 20, right: 20, bottom: 30, left: 50},
     drawingWidth = width - margin.left - margin.right,
     drawingHeight = height - margin.top - margin.bottom;
 
-    var svg = d3.select(this.refs["le-svg"].getDOMNode())
-    var playground = svg
+    let svg = d3.select(this.refs["le-svg"].getDOMNode())
+    let playground = svg
     .attr("width", width)
     .attr("height", height)
     .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
     //SCALES & AXES
-    var x = d3.time.scale()
+    let x = d3.time.scale()
     .range([0, drawingWidth])
     .domain(d3.extent(points, p => p.year))
 
-    var y = d3.scale.linear()
+    let y = d3.scale.linear()
     .range([drawingHeight, 0])
     .domain([0, d3.max(points, p => p.val)])
 
-    var xAxis = d3.svg.axis().scale(x)
+    let xAxis = d3.svg.axis().scale(x)
     .orient("bottom").outerTickSize(0).ticks(d3.time.years, 10)
 
-    var yAxis = d3.svg.axis().scale(y)
+    let yAxis = d3.svg.axis().scale(y)
     .orient("left").outerTickSize(0).ticks(6)
 
     playground.append("g")
@@ -75,7 +83,7 @@ var Chart = React.createClass({
     .attr("class", p => objectivePoints.find(o => o.year.getTime() === p.getTime()) ? "objective" : "")
 
     // Draw the LINE(s)
-    var line = d3.svg.line()
+    let line = d3.svg.line()
     .x(p => x(p.year))
     .y(p => y(p.val))
     .interpolate("basis")
