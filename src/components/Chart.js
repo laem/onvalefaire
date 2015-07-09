@@ -106,7 +106,7 @@ let Chart = React.createClass({
     playground.append("image")
     .attr(
       { "class": "icon",
-        "xlink:href": icon,
+        "xlink:href": icon.substring(1),
         "x": drawingWidth / 4 + "px",
         "y": 0,
         "height": drawingHeight + "px",
