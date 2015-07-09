@@ -1,0 +1,40 @@
+@import "_variables"
+
+.info
+  color: #333
+  font-size: 16px
+  width: 80%
+  height: 80%
+  padding-left: 10%
+  padding-top: 3%
+  position: absolute
+  top: 0
+  left: 0
+  background: white
+  border: 30px solid rgba(#000, 0.03)
+  text-align: left
+
+  .descriptor
+    color: $theme
+
+  .title
+    margin-bottom: 5%
+    span
+      display:block
+      margin-bottom: -10px
+      font-size: 24px
+    a
+      font-size: 12px
+      color: $theme
+  .back-button
+    margin-top: 5%
+    border: 1px solid rgba(#000, 0.1)
+    padding: 3px 5px 1px 5px
+    width: 70px
+    text-align: center
+    cursor: pointer
+    position: absolute
+    right: 6%
+    bottom: 10%
+  .back-button:hover
+    background: rgba(#000, 0.01)

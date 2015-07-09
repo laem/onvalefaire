@@ -25,7 +25,7 @@ III
 
 
 * Nucléaire
-"De réduire la part du nucléaire dans la production d'électricité à 50 % à l'horizon 2025 "
+"De réduire la part du nucléaire dans la production d'électricité à 50 % à l'horizon 2025"
 `line 100%`
 
 * flux thermiques renouvelables

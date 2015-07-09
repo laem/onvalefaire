@@ -3,30 +3,55 @@
 let React = require('react/addons');
 let d3 = require('d3')
 let Utils = require('./utils.js')
+let ChartInfo = require('./ChartInfo.js')
 
 require('styles/Chart.sass');
 
 let Chart = React.createClass({
 
-  render: function () {
+  getInitialState: () => Object({
+      infoDisplay: "none"
+  }),
+
+  render: function() {
     return (
         <div className="chart">
-          <div id="le-chart">
-            <svg ref="le-svg"></svg>
+          <div ref="le-chart">
           </div>
+
+          <ChartInfo
+            source={this.props.data.source} display={this.state.infoDisplay}
+            close={this.hideInfo}/>
         </div>
       );
   },
 
+  showInfo: function(){
+    this.setState({
+      infoDisplay: "block"
+    })
+  },
+
+  hideInfo: function(){
+    this.setState({
+      infoDisplay: "none"
+    })
+  },
+
   componentDidMount: function(){
+    this.draw()
+  },
+
+  draw: function(){
     //DATA
     let {history, objectives} = this.props.data
     let icon = require("../images/quote-icons/" + this.props.icon)
 
     //compute objective if they are operations
     Object.keys(objectives).forEach(k => {
+      if (typeof objectives[k] === "number") {return}
       let matches = objectives[k].match(/(\d+)\s?%\s?\[(\d{4})\]/) // e.g 20 % [1990] for 20 percent of the value in 1990
-      if (matches.length > 0 ){
+      if (matches && matches.length > 0 ){
         let [, percent, year] = matches
         objectives[k] = history[year] * (+percent) / 100
       }
@@ -43,7 +68,9 @@ let Chart = React.createClass({
     drawingWidth = width - margin.left - margin.right,
     drawingHeight = height - margin.top - margin.bottom;
 
-    let svg = d3.select(this.refs["le-svg"].getDOMNode())
+    let leChart = d3.select(this.refs["le-chart"].getDOMNode())
+    leChart.innerHTML = ""
+    let svg = leChart.append("svg")
     let defs = svg.append("defs");
     let playground = svg
     .attr("width", width)
@@ -85,7 +112,7 @@ let Chart = React.createClass({
         "width": drawingWidth / 2 + "px",
         "filter": "url(#teinte)"
       })
-    .attr("opacity", "0.06")
+    .attr("opacity", "0.1")
 
     playground.append("g")
     .attr("class", "y axis")
@@ -131,9 +158,15 @@ let Chart = React.createClass({
     .attr("cx", p => x(p.year))
     .attr("cy", p => y(p.val))
 
+    //SOURCE BUTTON
+    playground.append("text").attr("class", "info-button")
+    .text("source")
+    .attr("x", drawingWidth - 50)
+    .on("click", this.showInfo)
+
   }
 
 
-});
+})
 
 module.exports = Chart;

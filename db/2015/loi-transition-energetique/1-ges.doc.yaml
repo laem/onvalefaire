@@ -2,7 +2,12 @@ quote:
   text: Réduire les émissions de <em>gaz à effet de serre</em> de 40 % entre 1990 et 2030 et diviser par quatre les émissions de gaz à effet de serre entre 1990 et 2050.
 icon: ges.png
 data:
-  source: MA SOURCE
+  source:
+    title: Eurostat
+    link: http://ec.europa.eu/eurostat/web/environment/emissions-of-greenhouse-gases-and-air-pollutants/air-emissions-inventories/main-tables
+    description: Émissions de gaz à effet de serre
+    reference: tsdcc100
+    unit: base 100 en 1990
   objectives:
     2030: 60 % [1990]
     2050: 25 % [1990]

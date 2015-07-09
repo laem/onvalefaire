@@ -1,6 +1,8 @@
 @import "_variables"
 
 .chart
+  position: relative
+
   svg
     fill: $theme
     stroke: $theme
@@ -47,3 +49,8 @@
     stroke-width: 1.5
   circle:first-of-type
     fill: $theme
+
+  .info-button
+    font-size: 14px
+    fill: rgba($theme, 0.7)
+    cursor: pointer

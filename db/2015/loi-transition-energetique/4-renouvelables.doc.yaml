@@ -1,0 +1,22 @@
+quote:
+  text: "De porter <em>la part des énergies renouvelables</em> à 23 % de la consommation finale brute d'énergie en 2020 et à 32 % de cette consommation en 2030"
+icon: renouvelables.png
+data:
+  source:
+    title: "Ministère de l'écologie, du développement durable et de l'énergie : base Pégase"
+    link: http://developpement-durable.bsocom.fr
+    description: Part des énergies renouvelables dans la consommation finale brute d'énergie (N41310)
+    unit: total (en %)
+  objectives:
+    2020: 23
+    2030: 32
+  history:
+    2005: 9.2206740901
+    2006: 9.3934703619
+    2007:	10.1651688314
+    2008: 11.086169568
+    2009:	11.788123384
+    2010:	12.5670307746
+    2011:	12.7198966557
+    2012:	13.6270619233
+    2013:	14.2096890606
