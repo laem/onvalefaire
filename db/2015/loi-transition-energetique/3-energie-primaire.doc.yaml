@@ -6,7 +6,8 @@ data:
     title: "Ministère de l'écologie, du développement durable et de l'énergie : base Pégase"
     link: http://developpement-durable.bsocom.fr
     description: Consommation totale d'énergie primaire corrigée des variations climatiques
-    unit: millions de tep
+    unit: millions de  tonnes d’équivalent pétrole
+    unit-tip: millions de tep
   objectives:
     2030: 70 % [2012]
   history:

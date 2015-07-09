@@ -44,7 +44,7 @@ let Chart = React.createClass({
 
   draw: function(){
     //DATA
-    let {history, objectives} = this.props.data
+    let {history, objectives, source} = this.props.data
     let icon = require("../images/quote-icons/" + this.props.icon)
 
     //compute objective if they are operations
@@ -56,6 +56,7 @@ let Chart = React.createClass({
         objectives[k] = history[year] * (+percent) / 100
       }
     })
+
     //get a list of points from these objects
     let historyPoints = Utils.yearSeriesArray(history),
     lastHistoryPoint = historyPoints.reduce((mem, next) => next.year > mem.year ? next : mem),
@@ -163,6 +164,45 @@ let Chart = React.createClass({
     .text("source")
     .attr("x", drawingWidth - 50)
     .on("click", this.showInfo)
+
+
+    //FOCUS CIRCLE
+    //http://www.d3noob.org/2014/07/my-favourite-tooltip-method-for-line.html
+
+    let focus = playground.append("g")
+    .style("display", "none");
+    focus.append("circle")
+        .attr("class", "focus")
+        .attr("r", 3.5);
+
+    let focusValue = playground.append("text").attr("class", "focus-value")
+    .attr("x", drawingWidth / 2)
+    .attr("y", drawingHeight - 10)
+
+    playground.append("rect").attr("class", "mouse-capture") //serves to capture the mouse
+        .attr("width", drawingWidth)
+        .attr("height", drawingHeight)
+        .on("mouseover", function() { focus.style("display", null); focusValue.text("")})
+        .on("mouseout", function() { focus.style("display", "none"); focusValue.text("")})
+        .on("mousemove", function() {
+            let d = x.invert(d3.mouse(this)[0]),
+            year = d.getMonth() > 5 ? d.getFullYear() + 1 : d.getFullYear(),
+            allYears = [].concat(...[history, objectives].map(Object.keys)), //yay flatmap
+            closestYear = allYears.reduce((memo, y) => Math.abs(year - y) < Math.abs(memo - year) ? y : memo),
+            val = history[closestYear + ""] || objectives[closestYear + ""]
+
+            focus.select("circle.focus")
+            .attr("transform",
+                  "translate(" + x(d3.time.format("%Y").parse(closestYear + "")) + "," +
+                                 y(val) + ")")
+
+            let focusValueText =
+            Math.abs(year - closestYear) < 3 ?
+              `${Math.round(val * 10) / 10} ${source["unit-tip"] || ""} en ${year}`
+              : ""
+            focusValue.text(focusValueText)
+        });
+
 
   }
 
