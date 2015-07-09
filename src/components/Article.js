@@ -28,7 +28,7 @@ let OnvalefaireApp = React.createClass({
             <li>
               <q cite="masource.com" dangerouslySetInnerHTML={{__html: document.quote.text}}>
               </q>
-              <Chart data={document.data} />
+              <Chart data={document.data} icon={document.icon}/>
             </li>
           )}
         </ul>

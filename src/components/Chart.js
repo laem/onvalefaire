@@ -21,6 +21,8 @@ let Chart = React.createClass({
   componentDidMount: function(){
     //DATA
     let {history, objectives} = this.props.data
+    let icon = require("../images/quote-icons/" + this.props.icon)
+
     //compute objective if they are operations
     Object.keys(objectives).forEach(k => {
       let matches = objectives[k].match(/(\d+)\s?%\s?\[(\d{4})\]/) // e.g 20 % [1990] for 20 percent of the value in 1990
@@ -42,6 +44,7 @@ let Chart = React.createClass({
     drawingHeight = height - margin.top - margin.bottom;
 
     let svg = d3.select(this.refs["le-svg"].getDOMNode())
+    let defs = svg.append("defs");
     let playground = svg
     .attr("width", width)
     .attr("height", height)
@@ -63,6 +66,27 @@ let Chart = React.createClass({
     let yAxis = d3.svg.axis().scale(y)
     .orient("left").outerTickSize(0).ticks(6)
 
+    let filter = defs.append("filter").attr("id", "teinte")
+    filter.append("feColorMatrix")
+    .attr("in", "SourceGraphic")
+    .attr("type", "matrix")
+    .attr("values",  `0 0 0 0 0.08
+                      0 0 0 0 0.62
+                      0 0 0 0 0.52
+                      0 0 0 1 0`)
+
+    playground.append("image")
+    .attr(
+      { "class": "icon",
+        "xlink:href": icon,
+        "x": drawingWidth / 4 + "px",
+        "y": 0,
+        "height": drawingHeight + "px",
+        "width": drawingWidth / 2 + "px",
+        "filter": "url(#teinte)"
+      })
+    .attr("opacity", "0.06")
+
     playground.append("g")
     .attr("class", "y axis")
     .call(yAxis)
@@ -80,7 +104,7 @@ let Chart = React.createClass({
     .attr("y2", 6)
 
     d3.selectAll(".x.axis .tick text")
-    .attr("class", p => objectivePoints.find(o => o.year.getTime() === p.getTime()) ? "objective" : "")
+    .attr("class", p => objectivePoints.some(o => o.year.getTime() === p.getTime()) ? "objective" : "")
 
     // Draw the LINE(s)
     let line = d3.svg.line()
@@ -95,8 +119,7 @@ let Chart = React.createClass({
       .attr("d", line)
     }
 
-    drawPartialLine(historyPoints)
-    drawPartialLine(objectivePoints)
+    [historyPoints,objectivePoints].map(drawPartialLine)
 
     // POINT CIRCLES
     playground.append("g").attr("class", "circles")
