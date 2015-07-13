@@ -21,40 +21,37 @@ article
   transform: translateX(-50%)
   text-align: center
   font-weight: 300
-  border-right: 1px solid #16A085
-  border-left: 1px solid #16A085
-  box-shadow: 2px 4px 30px rgba(#000, 0.16)
+  //border-right: 1px solid #16A085
+  //border-left: 1px solid #16A085
+  //box-shadow: 2px 4px 30px rgba(#000, 0.16)
 
-article
+.article-header
+  background: $theme
+  color: white
+  width: 100%
+  text-align: center
+  padding-top: 1%
   .title
-    display:-moz-box
-    display:-webkit-box
-    display:box
-    margin-top: 30px
+
   .title h2
-    color: $theme
-    font-weight: 300
-    font-size: 42px
-    letter-spacing: -0.02em
-    margin-top: 0
+    font-weight: 200
+    font-size: 56px
+    margin-top: 10px
+    margin-bottom: 10px
   .title .decoration
-    text-align: center
-    width: 60px
-    margin-top: 8px
-    margin-right: 10px
+    width: 70px
+    margin-left: 50%
+    transform: translateX(-50%)
   .title .decoration img
     margin-left: 15px
     margin-right: 15px
     width: 40px
-    margin-bottom: -2px
-  .title .decoration .date
-    color: $theme
-    font-size: 10px
-    line-height: 9px
-    position: relative
-    bottom: 10px
-    font-weight: 500
+  .title .date
+    color: $darker-theme
+    font-size: 18px
+    font-weight: 300
     letter-spacing: 0
+    margin-bottom: 10px
 
 article ul
   list-style: none

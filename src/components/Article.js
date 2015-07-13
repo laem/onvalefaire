@@ -16,13 +16,16 @@ let OnvalefaireApp = React.createClass({
   render: function() {
     return (
       <div className='main'>
-    	 <article>
-       <div className="title">
-        <div className="decoration">
-          <img src={anSource}/><span className="date">27 mai 2015</span>
+      <div className="article-header">
+        <div className="title">
+         <div className="decoration">
+           <img src={anSource}/>
+         </div>
+         <h2>Loi sur la transition énergétique</h2>
+         <span className="date">27 mai 2015</span>
         </div>
-        <h2>Loi sur la transition énergétique</h2>
-       </div>
+      </div>
+       <article>
         <ul>
           {documents.map(document =>
             <li>
