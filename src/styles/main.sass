@@ -6,7 +6,12 @@ html, body
   background: #fff
   font-family:'Fira Sans'
 
+h2
+  font-size: 28px
+  font-weight: 300
 
+a
+  color: $darker-theme
 /* main */
 
 .main
@@ -30,29 +35,48 @@ article
   width: 100%
   text-align: center
   padding-top: 1%
+
   .title
 
-  .title h2
-    font-weight: 200
-    font-size: 56px
-    margin-top: 25px
-    margin-bottom: 35px
-    display: inline-block
-  .title .decoration
-    display: inline-block
-    padding-right: 15px
-    padding-left: 10px
-  .title .decoration img
-    width: 80px
-  .title .date
-    color: $darker-theme
-    font-size: 18px
-    font-weight: 300
-    letter-spacing: 0
-    margin-bottom: 10px
-    position: relative
-    top: 30px
-    left: -95px
+    h1
+      font-weight: 200
+      font-size: 56px
+      margin-top: 25px
+      margin-bottom: 35px
+      display: inline-block
+    .decoration
+      display: inline-block
+      padding-right: 15px
+      padding-left: 30px
+    .decoration img
+      width: 80px
+    .date
+      color: $darker-theme
+      font-size: 18px
+      font-weight: 300
+      letter-spacing: 0
+      margin-bottom: 10px
+      position: relative
+      top: 32px
+      left: -116px
+
+    .number-circle
+        position: relative
+        top: 30px
+        left: -110px
+        border-radius: 50%
+        font-size: 12px
+        padding: 5px 8px 2px 8px
+
+        background: $darker-theme
+        color: $theme
+        text-align: center
+
+        font-weight: 800
+        cursor: pointer
+
+    .number-circle:hover
+        background: white
 
 article ul
   list-style: none
@@ -81,3 +105,5 @@ article em
   color: $theme
   font-style: normal
   font-weight: 500
+article #footer
+  margin-bottom: 10px

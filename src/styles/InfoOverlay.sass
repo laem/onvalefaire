@@ -1,0 +1,42 @@
+@import "_variables"
+
+#info-overlay
+  position: fixed
+  top: 0
+  left: 0
+  width: 100%
+  height: 100%
+  background: white
+  z-index: 2
+  background: rgba(white, 0.90)
+
+  .content
+    position: absolute
+    top: 170px
+    width: 40%
+    left: 50%
+    transform: translateX(-50%)
+
+    p
+      font-weight: 300
+    .quote
+      border-left: 2px solid rgba($darker-theme, 0.65)
+      padding-left: 10px
+      font-weight: 400
+    .dark
+      color: $darker-theme
+      font-weight: 400
+
+  .back-button
+    border: 1px solid rgba(#000, 0.1)
+    padding: 3px 5px 1px 5px
+    width: 180px
+    text-align: center
+    cursor: pointer
+    font-size: 28px
+    position: absolute
+    left: 50%
+    transform: translateX(-50%)
+    bottom: 10%
+  .back-button:hover
+    background: rgba(#000, 0.01)
