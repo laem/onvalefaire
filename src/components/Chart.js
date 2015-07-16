@@ -185,6 +185,7 @@ let Chart = React.createClass({
         .on("mouseover", function() { focus.style("display", null); focusValue.text("")})
         .on("mouseout", function() { focus.style("display", "none"); focusValue.text("")})
         .on("mousemove", function() {
+            console.log(d3.mouse(this))
             let d = x.invert(d3.mouse(this)[0]),
             year = d.getMonth() > 5 ? d.getFullYear() + 1 : d.getFullYear(),
             allYears = [].concat(...[history, objectives].map(Object.keys)), //yay flatmap
