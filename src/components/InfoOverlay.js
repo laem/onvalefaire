@@ -43,10 +43,10 @@ module.exports = React.createClass({
         <div>
           <h2>Contribuez !</h2>
           <p>
-            Si vous êtes familiers avec la notion de <em>pull request</em>, contribuez directement au <a href="https://github.com/laem/onvalefaire" target="_blank">projet</a>.
+            Si vous êtes familiers avec la notion de <em>pull request</em> ou d'<em>issue</em> github, contribuez directement au <a href="https://github.com/laem/onvalefaire" target="_blank">projet</a>.
           </p>
           <p>
-            Sinon, envoyez simplement un mail à <span className="dark">l4em -arobase- outlook.com</span>
+            Sinon, envoyez simplement un mail à <span className="dark">l4em -arobase- outlook.com.</span>
           </p>
         </div>
       )

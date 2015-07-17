@@ -5,7 +5,8 @@ data:
   source:
     title: "Ministère de l'écologie, du développement durable et de l'énergie : base Pégase"
     link: http://developpement-durable.bsocom.fr
-    description: Part des énergies renouvelables dans la consommation finale brute d'énergie (N41310)
+    description: Part des énergies renouvelables dans la consommation finale brute d'énergie
+    reference: N41310
     unit: "% du total"
     unit-tip: "%"
   objectives:

@@ -5,7 +5,8 @@ data:
   source:
     title: Banque mondiale
     link: http://databank.banquemondiale.org
-    description: Production d’électricité à partir de sources nucléaires (EG.ELC.NUCL.ZS)
+    description: Production d’électricité à partir de sources nucléaires
+    reference: EG.ELC.NUCL.ZS
     unit: "% du total"
     unit-tip: "%"
   objectives:
