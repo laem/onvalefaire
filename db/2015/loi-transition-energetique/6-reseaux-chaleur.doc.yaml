@@ -1,0 +1,21 @@
+quote:
+  text: "Multiplier par cinq la quantité de chaleur et de froid renouvelables et de récupération livrée par les <em>réseaux de chaleur et de froid</em> à l'horizon 2030"
+icon: chaleur.png
+data:
+  source:
+    title: Syndicat National du Chauffage Urbain et de la Climatisation Urbaine (SNCU)
+    link: http://www.sncu.fr/Espace-documentaire/Statistiques/Chiffres-cles-EAB
+    description: Enquête annuelle sur les réseaux de chaleur et de froid
+    unit: "ENR et de récupération, énergie thermique produite, en TWh"
+    unit-tip: "TWh"
+  objectives:
+    2030: 500 % [2014] # 2014, la dernière année connue, en l'absence de référentiel dans la citation
+  history:
+    2005: 7.611
+    2007: 7.051
+    2008: 7.832
+    2009: 8.907
+    2010: 9.492
+    2011: 9.482
+    2012: 10.680
+    2014: 12.144
