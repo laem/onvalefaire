@@ -14,6 +14,7 @@ let Chart = React.createClass({
   }),
 
   render: function() {
+
     return (
         <div className="chart">
           <div ref="le-chart">
@@ -40,9 +41,15 @@ let Chart = React.createClass({
 
   componentDidMount: function(){
     this.draw()
+    let comp = this
+    window.addEventListener("resize", Utils.debounce(function() {
+      comp.draw()
+    }, 150))
+
   },
 
   draw: function(){
+
     //DATA
     let {history, objectives, source} = this.props.data
     let icon = require("../images/quote-icons/" + this.props.icon)
@@ -63,21 +70,24 @@ let Chart = React.createClass({
     objectivePoints = [lastHistoryPoint, ...Utils.yearSeriesArray(objectives, "objective")],
     points = historyPoints.concat(objectivePoints);
 
-    //SIZES
-    let [width, height] = [800, 300]
-    let margin = {top: 20, right: 20, bottom: 30, left: 50},
-    drawingWidth = width - margin.left - margin.right,
-    drawingHeight = height - margin.top - margin.bottom;
+    //DRAWING SIZES
+    let [ww, _] = this.getWindowDimensions(),
+    factor = ww < 600 ? 0.9 : ( ww < 900 ? 0.8 : (ww < 1390 ? 0.6 : 0.55)),
+    [w, h] = [ww * factor, ww * factor * 0.375],
+    margin = {top: 20, right: 20, bottom: 30, left: 50},
+    drawingWidth = w - margin.left - margin.right,
+    drawingHeight = h - margin.top - margin.bottom;
 
-    let leChart = d3.select(this.refs["le-chart"].getDOMNode())
+    let leChart = this.refs["le-chart"].getDOMNode()
     leChart.innerHTML = ""
-    let svg = leChart.append("svg")
+    let svg = d3.select(leChart).append("svg")
     let defs = svg.append("defs");
     let playground = svg
-    .attr("width", width)
-    .attr("height", height)
+    .attr("width", w)
+    .attr("height", h)
     .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
 
     //SCALES & AXES
     let x = d3.time.scale()
@@ -204,7 +214,18 @@ let Chart = React.createClass({
     .on("click", this.showInfo)
 
 
-  }
+  },
+
+  getWindowDimensions: function(){
+      var d = document,
+      e = d.documentElement,
+      g = d.getElementsByTagName('body')[0];
+
+      var x = window.innerWidth || e.clientWidth || g.clientWidth;
+      var y = window.innerHeight|| e.clientHeight|| g.clientHeight;
+
+      return [x, y]
+    },
 
 
 })

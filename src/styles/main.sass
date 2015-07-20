@@ -20,15 +20,6 @@ a
   background: #fff
   color: #333
 
-article
-  width: 65%
-  margin: 0 auto
-  text-align: center
-  font-weight: 300
-  //border-right: 1px solid #16A085
-  //border-left: 1px solid #16A085
-  //box-shadow: 2px 4px 30px rgba(#000, 0.16)
-
 .article-header
   background: $theme
   color: white
@@ -44,21 +35,32 @@ article
       margin-top: 25px
       margin-bottom: 35px
       display: inline-block
+      @media screen and (max-width: 1090px)
+        font-size: 36px
+        font-weight: 300
+        margin-bottom: 0
+        margin-top: 10px
     .decoration
       display: inline-block
       padding-right: 15px
       padding-left: 30px
     .decoration img
       width: 80px
+      @media screen and (max-width: 1090px)
+        width: 50px
     .date
       color: $darker-theme
       font-size: 18px
       font-weight: 300
-      letter-spacing: 0
       margin-bottom: 10px
       position: relative
       top: 32px
       left: -116px
+      @media screen and (max-width: 1090px)
+        font-size: 14px
+        display: block
+        position: static
+        line-height: 35px
 
     .number-circle
         position: relative
@@ -74,13 +76,33 @@ article
 
         font-weight: 800
         cursor: pointer
+        @media screen and (max-width: 1090px)
+          position: absolute
+          top: 10px
+          right: 10px
+          left: auto
+          font-size: 12px
+          padding: 4px 9px 1px 9px
 
     .number-circle:hover
         background: white
 
 article
+  width: 65%
+  margin: 0 auto
+  text-align: center
+  font-weight: 300
+  //border-right: 1px solid #16A085
+  //border-left: 1px solid #16A085
+  //box-shadow: 2px 4px 30px rgba(#000, 0.16)
+  @media screen and (max-width: 1090px)
+    width: 75%
+  @media screen and (max-width: 800px)
+    width: 90%
+
   ul
     list-style: none
+    padding-left: 0
 
 
   li
@@ -88,6 +110,9 @@ article
     color: #222
     margin-top: 8%
     margin-bottom: 12%
+    @media screen and (max-width: 800px)
+      font-size: 20px
+
 
   .chart
     margin-top: 4%
