@@ -5,4 +5,4 @@ var React = require('react');
 
 var content = document.getElementById('content');
 
-  React.render(<Article/>, content);
+React.render(<Article/>, content);
