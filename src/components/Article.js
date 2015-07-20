@@ -18,7 +18,7 @@ let documents = req.keys().map(key => {
   return doc
 })
 
-let OnvalefaireApp = React.createClass({
+let Article = React.createClass({
   getInitialState: function(){
       return {
         info: null
@@ -28,27 +28,27 @@ let OnvalefaireApp = React.createClass({
   render: function() {
     return (
       <div className='main'>
-      <InfoOverlay
-        about={this.state.info}
-        close={this.closeOverlay}
-        contribute={this.openOverlay.bind(this, "contribute")}/>
-      <div className="article-header">
-        <div className="title">
-         <div className="decoration">
-           <img src={anSource}/>
-         </div>
-         <h1>Loi sur la transition énergétique</h1>
-         <span className="date">27 mai 2015</span>
-         <span
-          className="number-circle"
-          onClick={this.openOverlay.bind(this, "info")}>
-          i</span>
+        <InfoOverlay
+          about={this.state.info}
+          close={this.closeOverlay}
+          contribute={this.openOverlay.bind(this, "contribute")}/>
+        <div className="article-header">
+          <div className="title">
+           <div className="decoration">
+             <img src={anSource}/>
+           </div>
+           <h1>Loi sur la transition énergétique</h1>
+           <span className="date">27 mai 2015</span>
+           <span
+            className="number-circle"
+            onClick={this.openOverlay.bind(this, "info")}>
+            i</span>
+          </div>
         </div>
-      </div>
        <article style={{display: this.state.info === null ? "block" : "none"}}>
         <ul>
           {documents.map(document =>
-            <li id={document.id}>
+            <li id={document.id} key={document.id}>
               <q cite="masource.com" dangerouslySetInnerHTML={{__html: document.quote.text}}>
               </q>
               <Chart data={document.data} icon={document.icon}/>
@@ -60,7 +60,6 @@ let OnvalefaireApp = React.createClass({
           <a href="#" onClick={this.openOverlay.bind(this, "contribute")}>Contact</a>
         </div>
   	   </article>
-
       </div>
     );
   },
@@ -76,4 +75,4 @@ let OnvalefaireApp = React.createClass({
   }
 });
 
-module.exports = OnvalefaireApp;
+module.exports = Article;

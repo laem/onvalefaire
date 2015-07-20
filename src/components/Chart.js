@@ -159,13 +159,6 @@ let Chart = React.createClass({
     .attr("cx", p => x(p.year))
     .attr("cy", p => y(p.val))
 
-    //SOURCE BUTTON
-    playground.append("text").attr("class", "info-button")
-    .text("source")
-    .attr("x", drawingWidth - 50)
-    .on("click", this.showInfo)
-
-
     //FOCUS CIRCLE
     //http://www.d3noob.org/2014/07/my-favourite-tooltip-method-for-line.html
 
@@ -202,6 +195,13 @@ let Chart = React.createClass({
               : ""
             focusValue.text(focusValueText)
         });
+
+    //SOURCE BUTTON
+    playground.append("text").attr("class", "info-button")
+    .text("source")
+    .attr("x", drawingWidth - 45)
+    .attr("y", drawingHeight - 5)
+    .on("click", this.showInfo)
 
 
   }

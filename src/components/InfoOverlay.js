@@ -26,16 +26,23 @@ module.exports = React.createClass({
       "info": (
         <div>
           <h2>A propos</h2>
-          <p>Après son adoption par l’<a  href="http://www.assemblee-nationale.fr/14/dossiers/transition_energetique_croissance_verte.asp"
-              target="_blank">
-          assemblée nationale</a> en nouvelle lecture le 26 mai 2015, le projet français de loi relatif à la transition énergétique pour la croissance verte doit être réexaminé par le <a  href="http://www.senat.fr/dossier-legislatif/pjl14-016.html"
-              target="_blank">
-          Sénat</a> du 9 au 17 juillet.</p>
+          <p>
+            Après son adoption par l’<a  href="http://www.assemblee-nationale.fr/14/dossiers/transition_energetique_croissance_verte.asp"
+              target="_blank">assemblée nationale</a> en nouvelle lecture le 26 mai 2015, le projet français de loi relatif à la transition énergétique pour la croissance verte doit être réexaminé par le <a  href="http://www.senat.fr/dossier-legislatif/pjl14-016.html"
+              target="_blank">Sénat</a> du 9 au 17 juillet.
+          </p>
 
-
-          <p className="quote">Ce site présente les principaux objectifs chiffrés de cette loi, visualisés.
-          Les sources sont ouvertes, notamment les <a href="https://github.com/laem/onvalefaire/tree/master/db/2015/loi-transition-energetique">données</a>.</p>
-          <p>En le parcourant, <em><a href="#" onClick={this.props.contribute}>n'hésitez pas</a> à corriger, suggérer ou ajouter des observations</em></p>
+          <p className="quote">
+            Ce site présente les principaux objectifs chiffrés de cette loi, visualisés.
+            Les sources sont ouvertes, notamment les <a href="https://github.com/laem/onvalefaire/tree/master/db/2015/loi-transition-energetique">données</a>.
+          </p>
+          <p>
+            En le parcourant, <em><a href="#" onClick={this.props.contribute}>n'hésitez pas</a> à corriger, suggérer ou ajouter des observations</em>
+          </p>
+          <br/>
+          <p className="credits">
+            Crédits des icônes : <a href="https://thenounproject.com/term/radiator/13721/">Radiator</a> et <a href="https://thenounproject.com/term/renewable-energy/81668/">Renewable Energy</a>
+          </p>
         </div>
       ),
 
