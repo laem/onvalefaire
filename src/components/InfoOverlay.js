@@ -41,7 +41,7 @@ module.exports = React.createClass({
           </p>
           <br/>
           <p className="credits">
-            Crédits des icônes : <a href="https://thenounproject.com/term/radiator/13721/">Radiator</a> et <a href="https://thenounproject.com/term/renewable-energy/81668/">Renewable Energy</a>
+            Crédits des icônes : <a target="_blank" href="https://thenounproject.com/term/radiator/13721/">Radiator</a> et <a target="_blank" href="https://thenounproject.com/term/renewable-energy/81668/">Renewable Energy</a>
           </p>
         </div>
       ),
