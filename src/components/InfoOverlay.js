@@ -28,7 +28,7 @@ module.exports = React.createClass({
           <h2>A propos</h2>
           <p>Après son adoption par l’<a  href="http://www.assemblee-nationale.fr/14/dossiers/transition_energetique_croissance_verte.asp"
               target="_blank">
-          l'assemblée nationale</a> en nouvelle lecture le 26 mai 2015, le projet de loi relatif à la transition énergétique pour la croissance verte doit être réexaminé par le <a  href="http://www.senat.fr/dossier-legislatif/pjl14-016.html"
+          assemblée nationale</a> en nouvelle lecture le 26 mai 2015, le projet français de loi relatif à la transition énergétique pour la croissance verte doit être réexaminé par le <a  href="http://www.senat.fr/dossier-legislatif/pjl14-016.html"
               target="_blank">
           Sénat</a> du 9 au 17 juillet.</p>
 

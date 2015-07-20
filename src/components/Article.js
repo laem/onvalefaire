@@ -11,7 +11,12 @@ let anSource = require("../images/an.png")
 
 let req = require.context('json!yaml!../../db', true, /.doc.yaml$/);
 //each document contains a quote and data
-let documents = req.keys().map(key => req(key))
+let documents = req.keys().map(key => {
+  let doc = req(key)
+  //"key is smthng like ./2015/loi-transition-energetique/1-ges.doc.yaml"
+  doc.id = key.split("/").pop().split(".").shift()
+  return doc
+})
 
 let OnvalefaireApp = React.createClass({
   getInitialState: function(){
@@ -43,7 +48,7 @@ let OnvalefaireApp = React.createClass({
        <article style={{display: this.state.info === null ? "block" : "none"}}>
         <ul>
           {documents.map(document =>
-            <li>
+            <li id={document.id}>
               <q cite="masource.com" dangerouslySetInnerHTML={{__html: document.quote.text}}>
               </q>
               <Chart data={document.data} icon={document.icon}/>
@@ -51,7 +56,8 @@ let OnvalefaireApp = React.createClass({
           )}
         </ul>
         <div id="footer">
-          <a href="#" onClick={this.openOverlay.bind(this, "contribute")}>À propos / contact</a>
+          <a href="#" onClick={this.openOverlay.bind(this, "info")}>À propos</a>
+          <a href="#" onClick={this.openOverlay.bind(this, "contribute")}>Contact</a>
         </div>
   	   </article>
 
