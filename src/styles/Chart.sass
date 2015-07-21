@@ -13,11 +13,13 @@
   path.line
     fill: none
     stroke-width: 1.8px
+    stroke: $darker-theme
 
   path.line.objective
     stroke-dasharray: 2, 3
     stroke-width: 1px
     opacity: 0.8
+    stroke: $theme
 
   .axis
     font-size: 16px
@@ -43,10 +45,12 @@
       opacity: 0
   .axis.x text.objective
     font-weight: 400
+    fill: $darker-theme
 
   circle
     fill: white
     stroke-width: 1.5
+    stroke: $darker-theme
   circle:first-of-type
     fill: $theme
 
@@ -66,3 +70,4 @@
   .focus-value
     font-size: 16px
     text-anchor: middle
+    fill: $darker-theme

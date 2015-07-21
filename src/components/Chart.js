@@ -125,7 +125,7 @@ let Chart = React.createClass({
         "width": drawingWidth / 2 + "px",
         "filter": "url(#teinte)"
       })
-    .attr("opacity", "0.1")
+    .attr("opacity", "0.15")
 
     playground.append("g")
     .attr("class", "y axis")
