@@ -5,6 +5,8 @@ let d3 = require('d3')
 let Utils = require('./utils.js')
 let ChartInfo = require('./ChartInfo.js')
 
+let Save = require('save-svg-as-png')
+
 require('styles/Chart.sass');
 
 let Chart = React.createClass({
@@ -116,7 +118,7 @@ let Chart = React.createClass({
     playground.append("image")
     .attr(
       { "class": "icon",
-        "xlink:href": icon.substring(1),
+        "xlink:xlink:href": icon.substring(1),
         "x": drawingWidth / 4 + "px",
         "y": 0,
         "height": drawingHeight + "px",
@@ -212,6 +214,8 @@ let Chart = React.createClass({
     .attr("x", drawingWidth - 45)
     .attr("y", drawingHeight - 5)
     .on("click", this.showInfo)
+
+    //Save.saveSvgAsPng(document.querySelector(".chart svg"), "diagram.png");
 
 
   },
