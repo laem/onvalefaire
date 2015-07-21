@@ -55,11 +55,21 @@ let Article = React.createClass({
             </li>
           )}
         </ul>
-        <div id="footer">
-          <a href="#" onClick={this.openOverlay.bind(this, "info")}>À propos</a>
-          <a href="#" onClick={this.openOverlay.bind(this, "contribute")}>Contact</a>
-        </div>
   	   </article>
+       <div id="share">
+       <div id="share-button" className="s-s"
+         data-type="twitter"
+         data-link="http://www.transition-e.co"
+         data-label="Partagez cette page"
+         data-text="On va le faire !">
+      </div>
+
+
+       </div>
+       <div id="footer">
+         <a href="#" onClick={this.openOverlay.bind(this, "info")}>À propos</a>
+         <a href="#" onClick={this.openOverlay.bind(this, "contribute")}>Contact</a>
+       </div>
       </div>
     );
   },
