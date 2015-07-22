@@ -1,0 +1,24 @@
+quote:
+  text: "Réduire la <em>consommation énergétique primaire</em> des énergies fossiles de 30 % en 2030 par rapport à la référence 2012"
+icon: energie-primaire.png
+data:
+  source:
+    title: "Ministère de l'écologie, du développement durable et de l'énergie : Bilan énergétique de la France"
+    link: http://www.statistiques.developpement-durable.gouv.fr/donnees-densemble/1925/2019/ensemble-bilans-lenergie-france.html
+    description: Consommation d’énergie primaire non renouvelable en métropole avec correction climatique
+    methode: Données extraites du graphique "Répartition de la consommation d’énergie primaire en France métropolitaine" pour chaque bilan annuel. Pour < 2007, données de Chiffres clés des énergies renouvelables 2013 (http://www.developpement-durable.gouv.fr/Chiffres-cles-des-energies.html), tableau "Bilan des énergies renouvelables en France métropolitaine 2013", ligne "Consommation primaire corrigée des variations climatiques", soustraite de l'indicateur "Consommation totale d'énergie primaire corrigée des variations climatiques" de la base Pégase (http://developpement-durable.bsocom.fr/Statistiques/).
+    unit: millions de tonnes d’équivalent pétrole
+    unit-tip: millions de tep
+  objectives:
+    2030: 70 % [2012]
+  history:
+    1990: 212.3
+    2000: 250.6
+    2005: 259.7
+    2007: 255.6
+    2008: 253.8
+    2009: 238.9
+    2010: 243.5
+    2011: 245.4
+    2012: 236.7
+    2013: 234.9
