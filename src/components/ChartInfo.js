@@ -11,7 +11,7 @@ module.exports = React.createClass({
       <div className="info" style={{display: this.props.display}}>
         <div className="title">
           <span>{source.description}</span>
-          <a href={source.link}>{source.link}</a>
+          <a target="_blank" href={source.link}>{source.link}</a>
         </div>
         <div><span className="descriptor">Source:</span> {source.title}</div>
         <div><span className="descriptor">Unité:</span> {source.unit}</div>
